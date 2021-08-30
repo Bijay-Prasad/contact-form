@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form | Web Tutorial</title>
+  <link rel="stylesheet" href="google_sheet.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <div class="wrapper">
+    <header>Send us a Message</header>
+    <form action="#" onsubmit="return validateForm()" method="post" autocomplete="off" name="google-sheet" >
+      <div class="dbl-field">
+        <div class="field">
+          <input type="text" name="Name" required placeholder="Enter your name">
+          <i class='fas fa-user'></i>
+        </div>
+        <div class="field">
+          <input type="email" name="Email" required placeholder="Enter your email">
+          <i class='fas fa-envelope'></i>
+        </div>
+      </div>
+      <div class="dbl-field">
+        <div class="field">
+          <input type="number" name="Phone" required placeholder="Enter your phone">
+          <i class='fas fa-phone-alt'></i>
+        </div>
+        <div class="field">
+          <input type="text" name="Website" required placeholder="Enter your website name">
+          <i class='fas fa-globe'></i>
+        </div>
+      </div>
+      <div class="message">
+        <textarea placeholder="Write your message" required name="Message"></textarea>
+        <i class="material-icons">message</i>
+      </div>
+      <div class="button-area">
+        <button class="sub" type="submit">Send Message</button>
+        <button class="res" type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSDZgLpRVbqNlqTt4Pxns7ZBp1s9ZHbyAdmHPoVur34CEjhcb-xo7sxsK7HV46LcLt/exec'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+</html>
